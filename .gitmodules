@@ -1,0 +1,3 @@
+[submodule "Slurp/vendor/spdlog"]
+	path = Slurp/vendor/spdlog
+	url = https://github.com/gabime/spdlog
