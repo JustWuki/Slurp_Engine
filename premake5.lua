@@ -26,7 +26,8 @@ project "Slurp"
 
 	includedirs
 	{
-		"%{prj.name}/vendor/spdlog/include"
+		"%{prj.name}/vendor/spdlog/include",
+		"%{prj.name}/vendor/SFML/include"
 	}
 
 	filter "system:windows"
@@ -45,17 +46,49 @@ project "Slurp"
 			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
 		}
 
+		libdirs
+		{
+			"%{prj.name}/vendor/SFML/lib"
+		}
+
 	filter "configurations:Debug"
 		defines "SLURP_DEBUG"
 		symbols "On"
 
+		links
+        {
+            "sfml-audio-d.lib",
+            "sfml-graphics-d.lib",
+            "sfml-network-d.lib",
+            "sfml-system-d.lib",
+            "sfml-window-d.lib"
+        }
+
 	filter "configurations:Release"
 		defines "SLURP_RELEASE"
 		optimize "On"
+		
+		links
+        {
+            "sfml-audio.lib",
+            "sfml-graphics.lib",
+            "sfml-network.lib",
+            "sfml-system.lib",
+            "sfml-window.lib"
+        }
 
 	filter "configurations:Dist"
 		defines "SLURP_DIST"
 		optimize "On"
+
+		links
+        {
+            "sfml-audio.lib",
+            "sfml-graphics.lib",
+            "sfml-network.lib",
+            "sfml-system.lib",
+            "sfml-window.lib"
+        }
 
 project "Sandbox"
 	location "Sandbox"
@@ -74,12 +107,18 @@ project "Sandbox"
 	includedirs
 	{
 		"Slurp/vendor/spdlog/include",
+		"Slurp/vendor/SFML/include",
 		"Slurp/src"
 	}
 
 	links
 	{
 		"Slurp"
+	}
+
+	postbuildcommands
+	{
+		("{COPY} ../Slurp/vendor/SFML/bin/ ../bin/" .. outputdir .. "/Sandbox")
 	}
 
 	filter "system:windows"
@@ -92,14 +131,46 @@ project "Sandbox"
 			"SLURP_PLATFORM_WINDOWS"
 		}
 
+		libdirs
+        {
+            "Slurp/vendor/SFML/lib"
+        }
+
 	filter "configurations:Debug"
 		defines "SLURP_DEBUG"
 		symbols "On"
+
+		links
+        {
+            "sfml-audio-d.lib",
+            "sfml-graphics-d.lib",
+            "sfml-network-d.lib",
+            "sfml-system-d.lib",
+            "sfml-window-d.lib"
+        }
 
 	filter "configurations:Release"
 		defines "SLURP_RELEASE"
 		optimize "On"
 
+		links
+        {
+            "sfml-audio.lib",
+            "sfml-graphics.lib",
+            "sfml-network.lib",
+            "sfml-system.lib",
+            "sfml-window.lib"
+        }
+
 	filter "configurations:Dist"
 		defines "SLURP_DIST"
 		optimize "On"
+
+		 links
+        {
+            "sfml-audio.lib",
+            "sfml-graphics.lib",
+            "sfml-network.lib",
+            "sfml-system.lib",
+            "sfml-window.lib"
+        }

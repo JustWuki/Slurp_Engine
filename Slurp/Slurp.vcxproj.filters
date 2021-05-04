@@ -19,12 +19,24 @@
     <ClInclude Include="src\Slurp\Log.h">
       <Filter>Slurp</Filter>
     </ClInclude>
+    <ClInclude Include="src\Slurp\Timestep.h">
+      <Filter>Slurp</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Slurp\Window.h">
+      <Filter>Slurp</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Slurp\Application.cpp">
       <Filter>Slurp</Filter>
     </ClCompile>
     <ClCompile Include="src\Slurp\Log.cpp">
+      <Filter>Slurp</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Slurp\Timestep.cpp">
+      <Filter>Slurp</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Slurp\Window.cpp">
       <Filter>Slurp</Filter>
     </ClCompile>
   </ItemGroup>

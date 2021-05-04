@@ -1,6 +1,8 @@
 #pragma once
 
 #include "Core.h"
+#include "Timestep.h"
+#include "Window.h"
 
 namespace Slurp
 {
@@ -11,6 +13,10 @@ namespace Slurp
 		virtual ~Application();
 
 		void Run();
+		//Method Should be overriden in sandbox
+		virtual void Update(double deltaTime);
+
+		Window* window;
 	};
 
 	// To be defined in client
